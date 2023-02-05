@@ -46,11 +46,19 @@ export class Cat extends Document {
   @IsNotEmpty()
   name: string;
 
-  @Prop()
+  @Prop({
+    default:
+      'https://item.kakaocdn.net/do/d0abc6fe74e616536cf07626699bbc707154249a3890514a43687a85e6b6cc82',
+  })
   @IsString()
   imgUrl: string;
 
-  readonly readOnlyData: { id: string; email: string; name: string };
+  readonly readOnlyData: {
+    id: string;
+    email: string;
+    name: string;
+    imgUrl: string;
+  };
 }
 
 export const CatSchema = SchemaFactory.createForClass(Cat);
@@ -60,5 +68,6 @@ CatSchema.virtual('readOnlyData').get(function (this: Cat) {
     id: this.id,
     email: this.email,
     name: this.name,
+    imgUrl: this.imgUrl,
   };
 });
