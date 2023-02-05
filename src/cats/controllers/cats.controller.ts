@@ -14,10 +14,10 @@ import { SignInRequestDto } from 'src/auth/dto/signin.request.dto';
 import { JwtAuthGuard } from 'src/auth/jwt/jwt.guard';
 import { CurrentUser } from 'src/common/decorators/user.decorator';
 import { multerOptions } from 'src/common/utils/multer.options';
-import { CatRequestDto } from './\bdto/cat.request.dto';
-import { CatResponseDto } from './\bdto/cat.response.dto';
-import { Cat } from './cats.schema';
-import { CatsService } from './cats.service';
+import { CatRequestDto } from '../dto/cat.request.dto';
+import { CatResponseDto } from '../dto/cat.response.dto';
+import { Cat } from '../cats.schema';
+import { CatsService } from '../services/cats.service';
 
 @Controller('cats')
 export class CatsController {
