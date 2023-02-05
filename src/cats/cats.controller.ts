@@ -1,8 +1,10 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { AuthService } from 'src/auth/auth.service';
 import { SignInRequestDto } from 'src/auth/dto/signin.request.dto';
-import { CatRequestDto } from './dto/cat.request.dto';
+import { JwtAuthGuard } from 'src/auth/jwt/jwt.guard';
+import { CurrentUser } from 'src/common/decorators/user.decorator';
+import { CatRequestDto } from './\bdto/cat.request.dto';
 import { CatResponseDto } from './\bdto/cat.response.dto';
 import { CatsService } from './cats.service';
 
@@ -14,9 +16,10 @@ export class CatsController {
   ) {}
 
   @ApiOperation({ summary: '현재 고양이 가져오기' })
+  @UseGuards(JwtAuthGuard)
   @Get()
-  getCurrentCat() {
-    return 'current cat';
+  getCurrentCat(@CurrentUser() cat) {
+    return cat.readOnlyData;
   }
 
   @ApiOperation({ summary: '회원가입' })
@@ -38,12 +41,6 @@ export class CatsController {
   @Post('/sign-in')
   signIn(@Body() body: SignInRequestDto) {
     return this.authService.createJwt(body);
-  }
-
-  @ApiOperation({ summary: '로그아웃' })
-  @Post('/sign-out')
-  signOut() {
-    return 'sign-out';
   }
 
   @ApiOperation({ summary: '고양이 이미지 업로드' })
