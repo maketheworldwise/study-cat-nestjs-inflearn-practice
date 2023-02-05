@@ -1,21 +1,10 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, PickType } from '@nestjs/swagger';
+import { Cat } from '../cats.schema';
 
-export class CatResponseDto {
+export class CatResponseDto extends PickType(Cat, ['email', 'name'] as const) {
   @ApiProperty({
     example: '<id>',
     description: 'id',
   })
   id: string;
-
-  @ApiProperty({
-    example: '<email>',
-    description: 'email',
-  })
-  email: string;
-
-  @ApiProperty({
-    example: '<name>',
-    description: 'name',
-  })
-  name: string;
 }
