@@ -4,7 +4,11 @@
 
 ## 🌴 진행 과정
 
+**프로젝트 설치 :**
+
 ```shell
 nest new .
-nest install --save @nestjs/mongoose mongoose
+npm install --save @nestjs/mongoose mongoose
+npm install --save @nestjs/config
+npm install --save class-validator class-transformer
 ```
