@@ -12,3 +12,17 @@ npm install --save @nestjs/mongoose mongoose
 npm install --save @nestjs/config
 npm install --save class-validator class-transformer
 ```
+
+```shell
+npm install --save bcrypt
+npm install --save @types/bcrypt
+```
+
+**DTO 설정 :**
+
+- DTO 클래스 생성후 타입으로 지정
+- DTO 클래스에서는 validator를 이용하여 유효성 검사 처리
+
+**읽기 전용 데이터 반환 :**
+
+- 스키마 클래스에서 읽기 전용 데이터 메서드를 만들어서 반환
