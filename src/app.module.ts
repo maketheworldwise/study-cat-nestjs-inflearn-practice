@@ -9,12 +9,7 @@ import { CatsModule } from './cats/cats.module';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
-    }),
+    MongooseModule.forRoot(process.env.MONGODB_URI),
     CatsModule,
   ],
   controllers: [AppController],
