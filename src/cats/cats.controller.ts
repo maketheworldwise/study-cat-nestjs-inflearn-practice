@@ -64,4 +64,10 @@ export class CatsController {
   ) {
     return this.catsService.uploadImg(cat, files);
   }
+
+  @ApiOperation({ summary: '모든 고양이 조회' })
+  @Get('/all')
+  getAllCats() {
+    return this.catsService.getAllCat();
+  }
 }
